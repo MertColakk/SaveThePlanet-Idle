@@ -6,18 +6,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Variables
-    public float planetHealth=100f;
-    public float habitability=1f;
-    float rotateSpeed=30f;
+    public float planetHealth=100f,habitability=1f; //Game attribute
+    float rotateSpeed=30f,recoverAmount=5f; 
+    Coroutine recoverCoroutine; //For is damage taken control
+    HealthBarSystem healthBarSystem; //For planets health bar
+    HabitabilityBarSystem habitabilityBarSystem; //For planets habitability text
 
 
     //Start and Update fncs
     void Start()
     {
-        while(true){
-            if(planetHealth<100)
-                StartCoroutine(recoverPlanet());
-        }
+        //Getting healthbar content
+        healthBarSystem = GetComponent<HealthBarSystem>();
+        habitabilityBarSystem = GetComponent<HabitabilityBarSystem>();
     }
 
     
@@ -25,7 +26,10 @@ public class PlayerController : MonoBehaviour
     {
         //Rotate in the axis y like planet
         transform.Rotate(0,rotateSpeed*Time.deltaTime,0);
-
+        
+        //Recover planet's health if damage taken
+        if(recoverCoroutine == null)
+            recoverCoroutine = StartCoroutine(recoverPlanet());
                  
     }
 
@@ -34,29 +38,27 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision other){
         if(planetHealth!=0f){
             changeHabitability(other);
-            if(other.gameObject.CompareTag("Meteor")){
+            if(other.gameObject.CompareTag("Meteor"))
                 TakeDamage(10f);
-            
-            }  
-                
+             
         }
-        Debug.Log(habitability);
-        Debug.Log(planetHealth); 
     }
 
-    //When planet take damage from meteor
+    //When planet take damage from an enemy
     void TakeDamage(float amount){
         planetHealth -= amount;
+        healthBarSystem.UpdateHealthBar(amount,"Damage");
     }
 
-    //When planet heal from meteor
+    //When planet recovering
     void HealPlanet(float amount){
         if(planetHealth<100)
             planetHealth += amount;
         else
-            planetHealth = 100;
+            planetHealth = 100;        
     }
 
+    //Habitability changing method
     void changeHabitability(Collision other){
         if(other.gameObject.CompareTag("Meteor"))
             if(habitability>1f)
@@ -70,10 +72,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator recoverPlanet(){
         while(planetHealth!=100){
             yield return new WaitForSeconds(4f);
-            HealPlanet(5f);
-            Debug.Log(planetHealth);
+            HealPlanet(recoverAmount);
+            healthBarSystem.UpdateHealthBar(recoverAmount,"Heal");
             yield return new WaitForSeconds(2f);
         }
+        recoverCoroutine = null;
     }
 
 
