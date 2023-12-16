@@ -21,15 +21,14 @@ public class HabitabilityBarSystem : MonoBehaviour
     // Habitability changing method
     public void changeHabitability(Collision other){
         if (other.gameObject.CompareTag("Meteor")){
-            if (habitability > 1f)
+            if (habitability > 2f)
                 habitability -= 4;
-            if (habitability <= 1)
-                habitability = 1f;
+            if (habitability <= 2)
+                habitability = 2f;
         }
         else if (other.gameObject.CompareTag("CarbonStone"))
-        {
             habitability += 7f;
-        }
+        
 
         updateHabitabilityText(habitability);
     }
