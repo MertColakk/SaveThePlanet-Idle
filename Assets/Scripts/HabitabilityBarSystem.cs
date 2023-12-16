@@ -10,8 +10,8 @@ public class HabitabilityBarSystem : MonoBehaviour
 
     void Start(){
         habitability = 2; // Starting amount of habitability
-        
-        StartCoroutine(Reproduction(habitability)); // Starting habitability
+        StartCoroutine(Reproduction()); 
+        StartCoroutine(TimeToDeath());
     }
 
     public void updateHabitabilityText(float amount){
@@ -20,44 +20,60 @@ public class HabitabilityBarSystem : MonoBehaviour
 
     // Habitability changing method
     public void changeHabitability(Collision other){
-        if (other.gameObject.CompareTag("Meteor"))
-            habitability = (habitability > 1f) ? habitability - 4 : 1f;
+        if (other.gameObject.CompareTag("Meteor")){
+            if (habitability > 1f)
+                habitability -= 4;
+            if (habitability <= 1)
+                habitability = 1f;
+        }
         else if (other.gameObject.CompareTag("CarbonStone"))
-            habitability += 4f;
-        
+        {
+            habitability += 7f;
+        }
+
         updateHabitabilityText(habitability);
     }
 
-    public IEnumerator Reproduction(float habitabilityAmount){
+    IEnumerator Reproduction(){
         // Variables
         int probabilityReproduction, waitForReproduction;
 
         while (true){
             probabilityReproduction = Random.Range(0, 100); // Generate a number for Reproduction probability
-            waitForReproduction = Random.Range(10, 25); // Generate a number for Wait second
+            waitForReproduction = Random.Range(20, 40);
 
-            habitabilityAmount += (probabilityReproduction > 70) ? 1 : (probabilityReproduction > 20) ? 2 : (probabilityReproduction > 10) ? 3 : 0;
+            if (probabilityReproduction > 70)
+                habitability += 1;
+            else if (probabilityReproduction > 20)
+                habitability += 2;
+            else if (probabilityReproduction > 10)
+                habitability += 3;
 
-            updateHabitabilityText(habitabilityAmount); // Update the habitability text
+            updateHabitabilityText(habitability); // Update the habitability text
 
             yield return new WaitForSeconds(waitForReproduction); // Wait for reproduction again
         }
     }
 
-    public IEnumerator TimeOfDeath(float habitabilityAmount){
+    IEnumerator TimeToDeath(){
         // Variables
-        int probabilityDeath, waitForReproduction;
+        int probabilityDeath, waitForDeath;
 
         while (true){
             probabilityDeath = Random.Range(0, 100); // Generate a number for Reproduction probability
-            
-            waitForReproduction = (habitability <= 40) ? Random.Range(30, 45) : Random.Range(20, 35);
+            if(habitability<=100)
+                waitForDeath = Random.Range(15, 25);
+            else
+                waitForDeath = Random.Range(5, 20);
 
-            habitabilityAmount -= (probabilityDeath>95)?3 :(probabilityDeath>5)?1:0;
+            if (probabilityDeath > 90)
+                habitability -= 1;
+            else if (probabilityDeath > 10)
+                habitability -= 3;
 
-            updateHabitabilityText(habitabilityAmount); // Update the habitability text
+            updateHabitabilityText(habitability); // Update the habitability text
 
-            yield return new WaitForSeconds(waitForReproduction); // Wait for reproduction again
+            yield return new WaitForSeconds(waitForDeath); // Wait for reproduction again
         }
     }
 }
