@@ -1218,9 +1218,12 @@ MonoBehaviour:
   myPool:
   - tag: Meteor
     prefab: {fileID: 5160975260108179954, guid: f7989024d80fd3a4e9d377441171a264, type: 3}
-    size: 10
+    size: 1
   - tag: GemStone
     prefab: {fileID: 2952178755823016568, guid: 649821083625c4c4182a14009cbc5ca2, type: 3}
+    size: 1
+  - tag: CarbonStone
+    prefab: {fileID: 9165861159550050472, guid: 509a9c5cf9e773348991816a0cabe718, type: 3}
     size: 1
 --- !u!4 &1873174056
 Transform:
