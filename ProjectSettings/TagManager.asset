@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Meteor
   - CarbonStone
+  - GemStone
   layers:
   - Default
   - TransparentFX

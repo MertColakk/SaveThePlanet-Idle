@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Meteor")){
             coinManager.changeCoin(-3f);
             other.gameObject.SetActive(false);
-        }                       
+        }else if(other.gameObject.CompareTag("GemStone"))
+            other.gameObject.SetActive(false);
+                          
     }
 
 

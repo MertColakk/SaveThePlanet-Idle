@@ -14,12 +14,31 @@ public class SpawnManager : MonoBehaviour
 
     void Start(){
         objectPooler = ObjectPooler.Instance;
-        objectPooler.SpawnFromPool("Meteor", chosen, Quaternion.identity);
+        StartCoroutine(spawnAndWait());
         
     }
 
-    
+    IEnumerator spawnAndWait(){
+        while(true){
+            chosen = selectPos(Random.Range(0,4));
+            int index = rateOfSpawn();
+            if(index==0)
+                objectPooler.SpawnFromPool("Meteor", chosen, Quaternion.identity);
+            else
+                objectPooler.SpawnFromPool("GemStone", chosen, Quaternion.identity);
 
+            yield return new WaitForSeconds(1.5f);
+        }   
+    }
+    int rateOfSpawn(){
+        int index = Random.Range(0,100);
+        if(Random.Range(0,100)>=95)
+            index = 1;
+        else
+            index = 0;
+
+        return index;
+    }
     Vector3 selectPos(int index){
         switch (index){
             case 0:
@@ -36,13 +55,5 @@ public class SpawnManager : MonoBehaviour
                 break;
         }
         return chosen;
-    }
-
-    IEnumerator spawnAndWait(){
-        chosen = selectPos(Random.Range(0,4));
-        objectPooler.SpawnFromPool("Meteor", chosen, Quaternion.identity);
-
-        yield return new WaitForSeconds(2f);
-        
     }
 }
