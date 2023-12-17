@@ -24,16 +24,20 @@ public class SpawnManager : MonoBehaviour
             int index = rateOfSpawn();
             if(index==0)
                 objectPooler.SpawnFromPool("Meteor", chosen, Quaternion.identity);
-            else
+            else if(index==1)
                 objectPooler.SpawnFromPool("GemStone", chosen, Quaternion.identity);
+            else
+                objectPooler.SpawnFromPool("CarbonStone", chosen, Quaternion.identity);
 
             yield return new WaitForSeconds(1.5f);
         }   
     }
     int rateOfSpawn(){
-        int index = Random.Range(0,100);
-        if(Random.Range(0,100)>=95)
+        int index,rate=Random.Range(0,100);
+        if(rate>=90)
             index = 1;
+        else if(rate>=85)
+            index = 2;
         else
             index = 0;
 

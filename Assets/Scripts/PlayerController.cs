@@ -31,10 +31,17 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision other){
         habitabilityBarSystem.changeHabitability(other);
         if(other.gameObject.CompareTag("Meteor")){
-            coinManager.changeCoin(-3f);
+            habitabilityBarSystem.changeHabitability(other);
+            if(coinManager.coin>1000)
+                coinManager.changeCoin(-25f);
             other.gameObject.SetActive(false);
         }else if(other.gameObject.CompareTag("GemStone"))
             other.gameObject.SetActive(false);
+        else if(other.gameObject.CompareTag("CarbonStone")){
+            habitabilityBarSystem.changeHabitability(other);
+            other.gameObject.SetActive(false);  
+        }
+            
                           
     }
 
