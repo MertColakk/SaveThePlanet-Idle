@@ -9,55 +9,51 @@ public class SpawnManager : MonoBehaviour
     Vector3 pos2 = new Vector3(8f, 4.25f, 0f);
     Vector3 pos3 = new Vector3(8f, -4.25f, 0f);
     Vector3 pos4 = new Vector3(-8f, -4.25f, 0f);
-    Vector3 chosen;
     ObjectPooler objectPooler;
 
     void Start(){
         objectPooler = ObjectPooler.Instance;
         StartCoroutine(spawnAndWait());
-        
     }
 
     IEnumerator spawnAndWait(){
         while(true){
-            chosen = selectPos(Random.Range(0,4));
             int index = rateOfSpawn();
             if(index==0)
-                objectPooler.SpawnFromPool("Meteor", chosen, Quaternion.identity);
+                objectPooler.SpawnFromPool("Meteor", selectPos(Random.Range(0,4)), Quaternion.identity);
             else if(index==1)
-                objectPooler.SpawnFromPool("GemStone", chosen, Quaternion.identity);
+                objectPooler.SpawnFromPool("GemStone", selectPos(Random.Range(0,4)), Quaternion.identity);
             else
-                objectPooler.SpawnFromPool("CarbonStone", chosen, Quaternion.identity);
+                objectPooler.SpawnFromPool("CarbonStone", selectPos(Random.Range(0,4)), Quaternion.identity);
 
             yield return new WaitForSeconds(1.5f);
         }   
     }
     int rateOfSpawn(){
         int index,rate=Random.Range(0,100);
-        if(rate>=90)
-            index = 1;
-        else if(rate>=85)
+        if(rate>=95)
             index = 2;
+        else if(rate>=85)
+            index = 1;
         else
             index = 0;
 
         return index;
     }
-    Vector3 selectPos(int index){
-        switch (index){
+    Vector3 selectPos(int location){
+        switch (location){
             case 0:
-                chosen = pos1;
-                break;
+                return pos1;    
             case 1:
-                chosen = pos2;
-                break;
+                return pos2;
+                
             case 2:
-                chosen = pos3;
-                break;
+                return pos3;
+                
             case 3:
-                chosen = pos4;
-                break;
+                return pos4;
+
         }
-        return chosen;
+        return Vector3.zero;
     }
 }

@@ -9,13 +9,16 @@ public class GemStone : MonoBehaviour
     CoinManager coinManager;
     Transform playerTransform;
     PlayerController playerController;
+    CoinAmountManagger manager;
     
     void Start(){
         GameObject planet = GameObject.Find("Player");
+        GameObject coinAmountManager = GameObject.Find("CoinAmountManager");
 
-        if(planet!=null){
+        if(planet!=null&&coinAmountManager!=null){
             coinManager = planet.GetComponent<CoinManager>();
             playerController = planet.GetComponent<PlayerController>();
+            manager = coinAmountManager.GetComponent<CoinAmountManagger>();
 
             playerTransform= playerController.transform;
         }
@@ -31,7 +34,7 @@ public class GemStone : MonoBehaviour
 
     //For Disable from pool object
     void OnMouseDown(){
-        coinManager.changeCoin(30f);
+        coinManager.changeCoin(manager.getCoinAmount("GemStone"));
         gameObject.SetActive(false);
     }
 }

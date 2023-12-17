@@ -20,7 +20,7 @@ public class CoinManager : MonoBehaviour
         updateCoinText(coin);
     }
 
-    void updateCoinText(float amount){
-        coinText.text = amount.ToString();
+    void updateCoinText(float coin){
+        coinText.text = coin.ToString();
     }
 }

@@ -10,13 +10,16 @@ public class MeteorController : MonoBehaviour
     CoinManager coinManager;
     Transform playerTransform;
     PlayerController playerController;
+    CoinAmountManagger amountManager;
     
     void Start(){
         GameObject planet = GameObject.Find("Player");
+        GameObject coinAmountManager = GameObject.Find("CoinAmountManager");
 
-        if(planet!=null){
+        if(planet!=null&&coinAmountManager!=null){
             coinManager = planet.GetComponent<CoinManager>();
             playerController = planet.GetComponent<PlayerController>();
+            amountManager = coinAmountManager.GetComponent<CoinAmountManagger>();
 
             playerTransform= playerController.transform;
         }
@@ -32,7 +35,7 @@ public class MeteorController : MonoBehaviour
 
     //For Disable from pool object
     void OnMouseDown(){
-        coinManager.changeCoin(8f);
+        coinManager.changeCoin(amountManager.getCoinAmount("Meteor"));
         gameObject.SetActive(false);
     }
 

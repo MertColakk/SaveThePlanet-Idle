@@ -6,7 +6,6 @@ public class CarbonStone : MonoBehaviour
 {
     //Variables
     float movementSpeed=7f,rotateSpeed=70f;
-    HabitabilityBarSystem habitabilityBarSystem;
     Transform playerTransform;
     PlayerController playerController;
     
@@ -14,7 +13,6 @@ public class CarbonStone : MonoBehaviour
         GameObject planet = GameObject.Find("Player");
 
         if(planet!=null){
-            habitabilityBarSystem = planet.GetComponent<HabitabilityBarSystem>();
             playerController = planet.GetComponent<PlayerController>();
 
             playerTransform= playerController.transform;
