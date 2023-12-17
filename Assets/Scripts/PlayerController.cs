@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Variables
-    HabitabilityBarSystem habitabilityBarSystem; //For planets habitability text
+    HabitabilityBarSystem habitabilityBarSystem; //For planet's habitability operations
+    CoinManager coinManager; //For player's buy sistem
 
 
     //Start and Update fncs
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         //Getting healthbar and habitability text content
         habitabilityBarSystem = GetComponent<HabitabilityBarSystem>();
+        coinManager = GetComponent<CoinManager>();
     }
 
     
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision other){
         habitabilityBarSystem.changeHabitability(other);
         if(other.gameObject.CompareTag("Meteor")){
+            coinManager.changeCoin(-3f);
             other.gameObject.SetActive(false);
         }                       
     }

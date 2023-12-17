@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
+    public float coin=0;
+    [SerializeField] Text coinText;
+    
+    
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start(){
+        coin = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    //Function Overloading for changing method
+    public void changeCoin(float amount){
+        coin += amount;
+
+        updateCoinText(amount);
+    }
+
+    void updateCoinText(float amount){
+        coinText.text = amount.ToString();
     }
 }
