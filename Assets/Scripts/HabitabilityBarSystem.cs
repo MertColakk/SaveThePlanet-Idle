@@ -21,13 +21,10 @@ public class HabitabilityBarSystem : MonoBehaviour
     // Habitability changing method
     public void changeHabitability(Collision other){
         if (other.gameObject.CompareTag("Meteor")){
-            if (habitability > 20f)
-                habitability -= 4;
-            else if(habitability>10f)
-                habitability -= 2;
-
-            if (habitability <= 2)
-                habitability = 2f;
+            if (habitability > 200f)
+                habitability -= 15;
+            else if(habitability>120f)
+                habitability -= 10;           
         }
         else if (other.gameObject.CompareTag("CarbonStone"))
             habitability += 7f;
@@ -60,22 +57,23 @@ public class HabitabilityBarSystem : MonoBehaviour
     IEnumerator TimeToDeath(){
         // Variables
         int probabilityDeath, waitForDeath;
+        if(habitability>150){
+            while (true){
+                probabilityDeath = Random.Range(0, 100); // Generate a number for Reproduction probability
+                if(habitability<=250)
+                    waitForDeath = Random.Range(15, 25);
+                else
+                    waitForDeath = Random.Range(5, 20);
 
-        while (true){
-            probabilityDeath = Random.Range(0, 100); // Generate a number for Reproduction probability
-            if(habitability<=100)
-                waitForDeath = Random.Range(15, 25);
-            else
-                waitForDeath = Random.Range(5, 20);
+                if (probabilityDeath > 90)
+                    habitability -= 5;
+                else if (probabilityDeath > 10)
+                    habitability -= 10;
 
-            if (probabilityDeath > 90)
-                habitability -= 1;
-            else if (probabilityDeath > 10)
-                habitability -= 3;
+                updateHabitabilityText(habitability); // Update the habitability text
 
-            updateHabitabilityText(habitability); // Update the habitability text
-
-            yield return new WaitForSeconds(waitForDeath); // Wait for reproduction again
+                yield return new WaitForSeconds(waitForDeath); // Wait for reproduction again
+            }
         }
     }
 }

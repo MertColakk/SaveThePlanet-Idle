@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class MeteorController : MonoBehaviour
+public class GemStone : MonoBehaviour
 {
     //Variables
-    float movementSpeed=5f,rotateSpeed=50f;
+    float movementSpeed=7f,rotateSpeed=50f;
     CoinManager coinManager;
     Transform playerTransform;
     PlayerController playerController;
@@ -32,10 +31,7 @@ public class MeteorController : MonoBehaviour
 
     //For Disable from pool object
     void OnMouseDown(){
-        coinManager.changeCoin(8f);
+        coinManager.changeCoin(30f);
         gameObject.SetActive(false);
     }
-
-    
-
 }

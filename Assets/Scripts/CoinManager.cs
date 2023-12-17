@@ -17,8 +17,7 @@ public class CoinManager : MonoBehaviour
     //Function Overloading for changing method
     public void changeCoin(float amount){
         coin += amount;
-
-        updateCoinText(amount);
+        updateCoinText(coin);
     }
 
     void updateCoinText(float amount){
