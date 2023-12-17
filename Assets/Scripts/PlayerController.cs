@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Variables
-    HealthBarSystem healthBarSystem; //For planets health bar
     HabitabilityBarSystem habitabilityBarSystem; //For planets habitability text
 
 
@@ -14,7 +13,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Getting healthbar and habitability text content
-        healthBarSystem = GetComponent<HealthBarSystem>();
         habitabilityBarSystem = GetComponent<HabitabilityBarSystem>();
     }
 
@@ -28,14 +26,10 @@ public class PlayerController : MonoBehaviour
 
     //Controlling isTouched to planet
     void OnCollisionEnter(Collision other){
-        if(healthBarSystem.planetHealth!=0f){
-            habitabilityBarSystem.changeHabitability(other);
-            if(other.gameObject.CompareTag("Meteor")){
-                healthBarSystem.TakeDamage(10f); 
-                other.gameObject.SetActive(false);
-            }
-                      
-        }
+        habitabilityBarSystem.changeHabitability(other);
+        if(other.gameObject.CompareTag("Meteor")){
+            other.gameObject.SetActive(false);
+        }                       
     }
 
 
