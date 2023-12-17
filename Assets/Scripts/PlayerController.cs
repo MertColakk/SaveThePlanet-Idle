@@ -30,8 +30,11 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision other){
         if(healthBarSystem.planetHealth!=0f){
             habitabilityBarSystem.changeHabitability(other);
-            if(other.gameObject.CompareTag("Meteor"))
-                healthBarSystem.TakeDamage(10f);       
+            if(other.gameObject.CompareTag("Meteor")){
+                healthBarSystem.TakeDamage(10f); 
+                other.gameObject.SetActive(false);
+            }
+                      
         }
     }
 

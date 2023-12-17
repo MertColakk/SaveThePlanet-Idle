@@ -19,7 +19,14 @@ public class MeteorController : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position,planetTransform.position,movementSpeed*Time.deltaTime); //Move to planet
-        transform.Rotate(rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime); //Rotate like a meteor
+        transform.Rotate(rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime); //Rotate like a meteor      
     }
+
+    //For Disable from pool object
+    void OnMouseDown(){
+        gameObject.SetActive(false);
+    }
+
+    
 
 }
