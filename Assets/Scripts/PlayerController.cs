@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     CoinManager coinManager; //For player's buy sistem
 
 
+
     //Start and Update fncs
     void Start()
     {

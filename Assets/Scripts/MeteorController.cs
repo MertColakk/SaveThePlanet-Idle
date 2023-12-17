@@ -6,17 +6,27 @@ using UnityEngine;
 public class MeteorController : MonoBehaviour
 {
     //Variables
-    [SerializeField] GameObject planet;
     float movementSpeed=4f,rotateSpeed=50f;
     CoinManager coinManager;
+    Transform playerTransform;
+    PlayerController playerController;
     
     void Start(){
-        coinManager = planet.GetComponent<CoinManager>();
-    }
+        GameObject planet = GameObject.Find("Player");
+
+        if(planet!=null){
+            coinManager = planet.GetComponent<CoinManager>();
+            playerController = planet.GetComponent<PlayerController>();
+
+            playerTransform= playerController.transform;
+        }
+        
+        
+    }   
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position,planet.transform.position,movementSpeed*Time.deltaTime); //Move to planet
+        transform.position = Vector3.MoveTowards(transform.position,playerTransform.position,movementSpeed*Time.deltaTime); //Move to planet
         transform.Rotate(rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime); //Rotate like a meteor      
     }
 
