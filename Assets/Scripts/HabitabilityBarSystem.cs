@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HabitabilityBarSystem : MonoBehaviour
 {
     // Variables
-    float habitability = 2f; // Game attribute
+    float habitability = 2f,growPeace=1f; // Game attributes,
     [SerializeField] Text habitabilityText;
 
     void Start(){
@@ -21,8 +21,11 @@ public class HabitabilityBarSystem : MonoBehaviour
     // Habitability changing method
     public void changeHabitability(Collision other){
         if (other.gameObject.CompareTag("Meteor")){
-            if (habitability > 2f)
+            if (habitability > 20f)
                 habitability -= 4;
+            else if(habitability>10f)
+                habitability -= 2;
+
             if (habitability <= 2)
                 habitability = 2f;
         }
@@ -42,11 +45,11 @@ public class HabitabilityBarSystem : MonoBehaviour
             waitForReproduction = Random.Range(20, 40);
 
             if (probabilityReproduction > 70)
-                habitability += 1;
+                habitability += growPeace;
             else if (probabilityReproduction > 20)
-                habitability += 2;
+                habitability += growPeace+2;
             else if (probabilityReproduction > 10)
-                habitability += 3;
+                habitability += growPeace+3;
 
             updateHabitabilityText(habitability); // Update the habitability text
 
