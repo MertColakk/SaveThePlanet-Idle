@@ -5,10 +5,10 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     // Variables
-    Vector3 pos1 = new Vector3(-8f, 4.25f, 0f);
-    Vector3 pos2 = new Vector3(8f, 4.25f, 0f);
-    Vector3 pos3 = new Vector3(8f, -4.25f, 0f);
-    Vector3 pos4 = new Vector3(-8f, -4.25f, 0f);
+    Vector3 pos1 = new Vector3(-2.5f, 4f, 0f);
+    Vector3 pos2 = new Vector3(2.5f, 4f, 0f);
+    Vector3 pos3 = new Vector3(2.5f, -4f, 0f);
+    Vector3 pos4 = new Vector3(-2.5f, -4f, 0f);
     ObjectPooler objectPooler;
 
     void Start(){
