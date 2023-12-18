@@ -6,7 +6,7 @@ using UnityEngine;
 public class MeteorController : MonoBehaviour
 {
     //Variables
-    float movementSpeed=5f,rotateSpeed=50f;
+    float movementSpeed=4f,rotateSpeed=50f;
     PlayerController playerController;
 
     void Start(){
@@ -16,9 +16,9 @@ public class MeteorController : MonoBehaviour
             playerController = planet.GetComponent<PlayerController>();
 
         if(gameObject.CompareTag("CarbonStone"))
-            movementSpeed = 8f;
+            movementSpeed = 6f;
         else if(gameObject.CompareTag("GemStone"))
-            movementSpeed = 7f;
+            movementSpeed = 5f;
     }
      
 
