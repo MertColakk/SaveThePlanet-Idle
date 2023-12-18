@@ -20,7 +20,12 @@ public class CarbonStone : MonoBehaviour
 
     //For Disable from pool object
     void OnMouseDown(){
-        habitabilitySystem.updateHabitability(habitabilityAmount);
         gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.CompareTag("Player")){
+            habitabilitySystem.updateHabitability(habitabilityAmount);
+        }
     }
 }

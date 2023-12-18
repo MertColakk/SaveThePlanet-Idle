@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
             else
                 objectPooler.SpawnFromPool("CarbonStone", selectPos(Random.Range(0,4)), Quaternion.identity);
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.7f);
         }   
     }
     int rateOfSpawn(){
