@@ -7,34 +7,22 @@ public class MeteorController : MonoBehaviour
 {
     //Variables
     float movementSpeed=5f,rotateSpeed=50f;
-    CoinManager coinManager;
-    Transform playerTransform;
     PlayerController playerController;
-    
+
     void Start(){
+        
         GameObject planet = GameObject.Find("Player");
-
-        if(planet!=null){
-            coinManager = planet.GetComponent<CoinManager>();
+        if(planet!=null)
             playerController = planet.GetComponent<PlayerController>();
-
-            playerTransform= playerController.transform;
-        }
-        
-        
-    }   
+    }
+     
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position,playerTransform.position,movementSpeed*Time.deltaTime); //Move to planet
+        transform.position = Vector3.MoveTowards(transform.position,playerController.transform.position,movementSpeed*Time.deltaTime); //Move to planet
         transform.Rotate(rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime); //Rotate like a meteor      
     }
-
-    //For Disable from pool object
-    void OnMouseDown(){
-        coinManager.changeCoin(8f);
-        gameObject.SetActive(false);
-    }
+    
 
     
 

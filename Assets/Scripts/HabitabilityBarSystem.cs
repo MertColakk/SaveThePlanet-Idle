@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class HabitabilityBarSystem : MonoBehaviour
 {
     // Variables
-    float habitability = 2f,growPeace=1f; // Game attributes,
+    public float habitability = 2f;
+    public float growPeace=1f,damageByMeteor=15f,habitabilityChance=10f; // Game attributes,
     [SerializeField] Text habitabilityText;
 
     void Start(){
@@ -14,22 +15,13 @@ public class HabitabilityBarSystem : MonoBehaviour
         StartCoroutine(TimeToDeath());
     }
 
-    public void updateHabitabilityText(float amount){
+    void updateHabitabilityText(float amount){
         habitabilityText.text = amount.ToString();
     }
 
     // Habitability changing method
-    public void changeHabitability(Collision other){
-        if (other.gameObject.CompareTag("Meteor")){
-            if (habitability > 200f)
-                habitability -= 15;
-            else if(habitability>120f)
-                habitability -= 10;           
-        }
-        else if (other.gameObject.CompareTag("CarbonStone"))
-            habitability += 7f;
-        
-
+    public void updateHabitability(float amount){
+        habitability += amount;
         updateHabitabilityText(habitability);
     }
 
