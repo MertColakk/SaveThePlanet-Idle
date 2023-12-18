@@ -7,20 +7,33 @@ public class CoinManager : MonoBehaviour
 {
     public float coin=0;
     [SerializeField] Text coinText;
-    
-    
-    // Start is called before the first frame update
+    public float coinPerSecond=4.3f;
+      
     void Start(){
         coin = 0;
+
+        StartCoroutine(idleGainCoin());
     }
 
-    //Function Overloading for changing method
     public void changeCoin(float amount){
         coin += amount;
         updateCoinText(coin);
     }
 
     void updateCoinText(float coin){
-        coinText.text = coin.ToString();
+        if(coin<1000){
+            coinText.text = coin.ToString("F2");
+        }else if(coin>=1000){
+            coinText.text = (coin / 1000).ToString("F2") + "K";
+        }
+    }
+
+    IEnumerator idleGainCoin(){
+        while(true){
+            coin += coinPerSecond;
+            updateCoinText(coin);
+
+            yield return new WaitForSeconds(1f);
+        }
     }
 }
