@@ -29,20 +29,8 @@ public class PlayerController : MonoBehaviour
 
     //Controlling isTouched to planet
     void OnCollisionEnter(Collision other){
-        habitabilityBarSystem.changeHabitability(other);
-        if(other.gameObject.CompareTag("Meteor")){
-            habitabilityBarSystem.changeHabitability(other);
-            if(coinManager.coin>1000)
-                coinManager.changeCoin(-25f);
-            other.gameObject.SetActive(false);
-        }else if(other.gameObject.CompareTag("GemStone"))
-            other.gameObject.SetActive(false);
-        else if(other.gameObject.CompareTag("CarbonStone")){
-            habitabilityBarSystem.changeHabitability(other);
-            other.gameObject.SetActive(false);  
-        }
-            
-                          
+        other.gameObject.SetActive(false);
+                                
     }
 
 
