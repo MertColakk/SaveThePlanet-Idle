@@ -5,7 +5,6 @@ using UnityEngine;
 public class CarbonStone : MonoBehaviour
 {
     //Variables
-    float movementSpeed=7f,rotateSpeed=70f;
     public float habitabilityAmount=30f;
     PlayerController playerController;
     HabitabilityBarSystem habitabilitySystem;
@@ -20,12 +19,6 @@ public class CarbonStone : MonoBehaviour
         
         
     }   
-
-    void Update()
-    {
-        transform.position = Vector3.MoveTowards(transform.position,playerController.transform.position,movementSpeed*Time.deltaTime); //Move to planet
-        transform.Rotate(rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime,rotateSpeed*Time.deltaTime); //Rotate like a meteor      
-    }
 
     //For Disable from pool object
     void OnMouseDown(){

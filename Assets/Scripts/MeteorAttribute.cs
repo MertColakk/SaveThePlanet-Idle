@@ -2,31 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemStone : MonoBehaviour
+public class MeteorAttribute : MonoBehaviour
 {
     //Variables
     CoinManager coinManager;
-    public float damageToPlanet=-8f;
     HabitabilityBarSystem habitabilitySystem;
-    public float gemStoneCoin=40f;
-    
+    public float meteorCoin=8f,damageToHabitability=-20;
     void Start(){
         GameObject planet = GameObject.Find("Player");
 
         if(planet!=null){
             coinManager = planet.GetComponent<CoinManager>();
-            habitabilitySystem = planet.GetComponent<HabitabilityBarSystem>();    
+            habitabilitySystem = planet.GetComponent<HabitabilityBarSystem>();
         }
         
         
-    }   
+    }  
 
-    //For Disable from pool object
     void OnMouseDown(){
-        coinManager.changeCoin(gemStoneCoin);
-        if(habitabilitySystem.habitability>500){
-            habitabilitySystem.updateHabitability(damageToPlanet);
-        }
+        coinManager.changeCoin(meteorCoin);
+            if(habitabilitySystem.habitability>1000)
+                habitabilitySystem.updateHabitability(damageToHabitability);
         gameObject.SetActive(false);
     }
 }

@@ -81,6 +81,9 @@ PrefabInstance:
       addedObject: {fileID: 2168857581033083436}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7c56c23ccee27a4b8ed4a7e8841d9e6, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -2647197838838498251}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7c56c23ccee27a4b8ed4a7e8841d9e6, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8649914461935953219}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7c56c23ccee27a4b8ed4a7e8841d9e6, type: 3}
       insertIndex: -1
@@ -103,6 +106,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f78509c84683e4b94391be86ad1236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2647197838838498251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5160975260108179954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644f4651c7dc349d3b6678171e27b302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteorCoin: 8
+  damageToHabitability: -20
 --- !u!135 &8649914461935953219
 SphereCollider:
   m_ObjectHideFlags: 0
