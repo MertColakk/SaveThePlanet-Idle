@@ -16,7 +16,7 @@ public class MeteorController : MonoBehaviour
             playerController = planet.GetComponent<PlayerController>();
 
         if(gameObject.CompareTag("CarbonStone"))
-            movementSpeed = 5f;
+            movementSpeed = 4f;
         else if(gameObject.CompareTag("GemStone"))
             movementSpeed = 4f;
     }

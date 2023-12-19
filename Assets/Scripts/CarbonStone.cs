@@ -9,10 +9,10 @@ public class CarbonStone : MonoBehaviour
     HabitabilityBarSystem habitabilitySystem;
     
     void Start(){
-        GameObject planet = GameObject.Find("Player");
+        GameObject buySystem = GameObject.Find("BuySystem");
 
-        if(planet!=null){
-            habitabilitySystem = planet.GetComponent<HabitabilityBarSystem>();
+        if(buySystem!=null){
+            habitabilitySystem = buySystem.GetComponent<HabitabilityBarSystem>();
         }
         
         

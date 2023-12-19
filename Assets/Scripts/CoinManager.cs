@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
     public float coin=0;
-    [SerializeField] Text coinText;
+    [SerializeField] TMP_Text coinText;
     public float coinPerSecond=4.3f;
+    public float meteorCoin=8f;
       
     void Start(){
         coin = 0;

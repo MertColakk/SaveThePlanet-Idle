@@ -7,20 +7,20 @@ public class MeteorAttribute : MonoBehaviour
     //Variables
     CoinManager coinManager;
     HabitabilityBarSystem habitabilitySystem;
-    public float meteorCoin=8f,damageToHabitability=-20;
+    public float damageToHabitability=-20;
     void Start(){
-        GameObject planet = GameObject.Find("Player");
+        GameObject buySystem = GameObject.Find("BuySystem");
 
-        if(planet!=null){
-            coinManager = planet.GetComponent<CoinManager>();
-            habitabilitySystem = planet.GetComponent<HabitabilityBarSystem>();
+        if(buySystem!=null){
+            coinManager = buySystem.GetComponent<CoinManager>();
+            habitabilitySystem = buySystem.GetComponent<HabitabilityBarSystem>();
         }
         
         
     }  
 
     void OnMouseDown(){
-        coinManager.changeCoin(meteorCoin);
+        coinManager.changeCoin(coinManager.meteorCoin);
             if(habitabilitySystem.habitability>1000)
                 habitabilitySystem.updateHabitability(damageToHabitability);
         gameObject.SetActive(false);

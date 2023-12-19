@@ -11,11 +11,11 @@ public class GemStone : MonoBehaviour
     public float gemStoneCoin=40f;
     
     void Start(){
-        GameObject planet = GameObject.Find("Player");
+        GameObject buySystem = GameObject.Find("BuySystem");
 
-        if(planet!=null){
-            coinManager = planet.GetComponent<CoinManager>();
-            habitabilitySystem = planet.GetComponent<HabitabilityBarSystem>();    
+        if(buySystem!=null){
+            coinManager = buySystem.GetComponent<CoinManager>();
+            habitabilitySystem = buySystem.GetComponent<HabitabilityBarSystem>();    
         }
         
         
