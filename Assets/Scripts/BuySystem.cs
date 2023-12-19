@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BuySystem : MonoBehaviour
 {
-    //Variables
-        //Coin buy
-        
+    //Variables      
     MeteorAttribute meteorAttribute;
     CarbonStone carbonStone;
     HabitabilityBarSystem habitabilitySystem;
     CoinManager coinManager;
     GemStone gemStone;
+    [SerializeField] Image panel;
     private void Start() {
         GameObject planet = GameObject.Find("Player");
         if(planet!=null){
@@ -20,7 +19,13 @@ public class BuySystem : MonoBehaviour
             gemStone = planet.GetComponent<GemStone>();
             habitabilitySystem = planet.GetComponent<HabitabilityBarSystem>();
             coinManager = planet.GetComponent<CoinManager>();
+            panel.gameObject.SetActive(false);
         }
     }
+
+    
+
+    
+
     
 }
