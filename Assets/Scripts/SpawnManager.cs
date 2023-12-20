@@ -14,16 +14,21 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator spawnAndWait(){
         while(true){
+            int randY;
             int index = rateOfSpawn();
+            if(Random.Range(0,2)==0)
+                randY = 4;
+            else
+                randY = -4;
             switch(index){
                 case 0:
-                    objectPooler.SpawnFromPool("Meteor",new Vector3(Random.Range(-2.5f,2.5f),4f,0f), Quaternion.identity);
+                    objectPooler.SpawnFromPool("Meteor",new Vector3(Random.Range(-2.5f,2.5f),randY,0f), Quaternion.identity);
                     break;
                 case 1:
-                    objectPooler.SpawnFromPool("GemStone",new Vector3(Random.Range(-2.5f,2.5f),4f,0f), Quaternion.identity);
+                    objectPooler.SpawnFromPool("GemStone",new Vector3(Random.Range(-2.5f,2.5f),randY,0f), Quaternion.identity);
                     break;
                 case 2:
-                    objectPooler.SpawnFromPool("CarbonStone",new Vector3(Random.Range(-2.5f,2.5f),4f,0f), Quaternion.identity);
+                    objectPooler.SpawnFromPool("CarbonStone",new Vector3(Random.Range(-2.5f,2.5f),randY,0f), Quaternion.identity);
                     break;
             }
 
