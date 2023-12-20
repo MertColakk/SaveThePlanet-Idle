@@ -136,6 +136,11 @@ public class BuySystem : MonoBehaviour
         }
     }
 
+    //Debug fncs
+    public void upradeHab(){
+        habitabilitySystem.updateHabitability(100);
+    }
+
 
     
 
