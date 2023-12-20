@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class HabitabilityBarSystem : MonoBehaviour
 {
     // Variables
-    public float habitability = 2f;
-    public float growPeace=1f,damageByMeteor=15f,habitabilityChance=10f; // Game attributes,
+    public float habitability = 2f,carbonStoneHabitability=30f,growPeace=1f;
     [SerializeField] Text habitabilityText;
 
     void Start(){

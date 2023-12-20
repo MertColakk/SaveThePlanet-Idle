@@ -5,7 +5,6 @@ using UnityEngine;
 public class CarbonStone : MonoBehaviour
 {
     //Variables
-    public float habitabilityAmount=30f;
     HabitabilityBarSystem habitabilitySystem;
     
     void Start(){
@@ -25,7 +24,7 @@ public class CarbonStone : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.CompareTag("Player")){
-            habitabilitySystem.updateHabitability(habitabilityAmount);
+            habitabilitySystem.updateHabitability(habitabilitySystem.carbonStoneHabitability);
         }
     }
 }

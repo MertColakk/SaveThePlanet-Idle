@@ -9,6 +9,7 @@ public class CoinManager : MonoBehaviour
     [SerializeField] TMP_Text coinText;
     public float coinPerSecond=4.3f;
     public float meteorCoin=8f;
+    public float gemStoneCoin=40f;
       
     void Start(){
         coin = 0;
