@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644f4651c7dc349d3b6678171e27b302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorCoin: 8
   damageToHabitability: -20
 --- !u!135 &8649914461935953219
 SphereCollider:
