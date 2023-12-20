@@ -12,15 +12,21 @@ public class BuySystem : MonoBehaviour
 
         //Gold variables
         float neededGold=120;
-        int goldLevel=0;
+        int goldLevel=1;
         [SerializeField] TMP_Text costText;
         [SerializeField] TMP_Text levelText;
 
         //Meteor Gold Gain
         float meteorNeeded=200;
-        int meteorLevel=0;
+        int meteorLevel=1;
         [SerializeField] TMP_Text meteorCostText;
         [SerializeField] TMP_Text meteorLevelText;
+
+        //Meteor Gold Gain
+        float carbonNeeded=50;
+        int carbonLevel=1;
+        [SerializeField] TMP_Text carbonCostText;
+        [SerializeField] TMP_Text carbonLevelText;
 
     //Others
     MeteorAttribute meteorAttribute;
@@ -30,12 +36,13 @@ public class BuySystem : MonoBehaviour
     GemStone gemStone;
     [SerializeField] Image panel;
     private void Start() {
-        
+        GameObject carbonStoneObj = GameObject.FindWithTag("CarbonStone");
+
         isOpen=false;
         panel.gameObject.SetActive(isOpen);
         
         meteorAttribute = GetComponent<MeteorAttribute>();
-        carbonStone = GetComponent<CarbonStone>();
+        carbonStone = carbonStoneObj.GetComponent<CarbonStone>();
         gemStone = GetComponent<GemStone>();
         habitabilitySystem = GetComponent<HabitabilityBarSystem>();
         coinManager = GetComponent<CoinManager>();
@@ -44,7 +51,8 @@ public class BuySystem : MonoBehaviour
         updateText(levelText,goldLevel);
         updateText(meteorCostText,meteorNeeded);
         updateText(meteorLevelText,meteorLevel);
-        
+        updateText(carbonCostText,carbonNeeded);
+        updateText(carbonLevelText,carbonLevel);
     }
 
     //Panel functions
@@ -85,6 +93,19 @@ public class BuySystem : MonoBehaviour
 
             updateText(meteorCostText,meteorNeeded);
             updateText(meteorLevelText,meteorLevel);
+        }
+    }
+
+    public void upgradeCarbon(){
+        if(carbonStone!=null&&coinManager.coin>=carbonNeeded){
+            coinManager.coin -= carbonNeeded;
+            carbonLevel+=1;
+
+            carbonStone.habitabilityAmount *= 3f;
+            carbonNeeded *= 2.1f;
+
+            updateText(carbonCostText,carbonNeeded);
+            updateText(carbonLevelText,carbonLevel);
         }
     }
 
