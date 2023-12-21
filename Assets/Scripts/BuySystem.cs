@@ -16,6 +16,7 @@ public class BuySystem : MonoBehaviour
         int goldLevel=1;
         [SerializeField] TMP_Text costText;
         [SerializeField] TMP_Text levelText;
+        [SerializeField] Image goldLevelImage;
 
         //Meteor Gold Gain
         [SerializeField] Button meteorButton;
@@ -23,6 +24,7 @@ public class BuySystem : MonoBehaviour
         int meteorLevel=1;
         [SerializeField] TMP_Text meteorCostText;
         [SerializeField] TMP_Text meteorLevelText;
+        [SerializeField] Image meteorLevelImage;
 
         //CarbonStone Gold Gain
         [SerializeField] Button carbonButton;
@@ -30,6 +32,7 @@ public class BuySystem : MonoBehaviour
         int carbonLevel=1;
         [SerializeField] TMP_Text carbonCostText;
         [SerializeField] TMP_Text carbonLevelText;
+        [SerializeField] Image carbonLevelImage;
 
         //GemStone Gold Gain
         [SerializeField] Button gemButton;
@@ -37,6 +40,7 @@ public class BuySystem : MonoBehaviour
         int gemLevel=1;
         [SerializeField] TMP_Text gemCostText;
         [SerializeField] TMP_Text gemLevelText;
+        [SerializeField] Image gemLevelImage;
 
     //Others
     HabitabilityBarSystem habitabilitySystem;
@@ -83,11 +87,13 @@ public class BuySystem : MonoBehaviour
 
     public void upgradeCoin(){
         if(coinManager!=null&&coinManager.coin>=neededGold){
-            coinManager.coin -= neededGold;
+            coinManager.changeCoin(-neededGold);
             goldLevel+=1;
 
             coinManager.coinPerSecond *= 1.8f;
             neededGold *= 1.6f;
+
+            updateLevelImage(goldLevelImage,goldLevel);
 
             if(goldLevel==10)
                 goldButton.interactable=false;
@@ -98,11 +104,13 @@ public class BuySystem : MonoBehaviour
 
     public void upgradeMeteor(){
         if(coinManager!=null&&coinManager.coin>=meteorNeeded){
-            coinManager.coin -= meteorNeeded;
+            coinManager.changeCoin(-meteorNeeded);
             meteorLevel+=1;
 
             coinManager.meteorCoin *= 1.8f;
             meteorNeeded *= 1.6f;
+
+            updateLevelImage(meteorLevelImage,meteorLevel);
 
             if(meteorLevel==10)
                 meteorButton.interactable=false;
@@ -113,11 +121,13 @@ public class BuySystem : MonoBehaviour
 
     public void upgradeCarbon(){
         if(coinManager!=null&&coinManager.coin>=carbonNeeded){
-            coinManager.coin -= carbonNeeded;
+            coinManager.changeCoin(-carbonNeeded);
             carbonLevel+=1;
 
             habitabilitySystem.carbonStoneHabitability *= 1.3f;
             carbonNeeded *= 1.9f;
+
+            updateLevelImage(carbonLevelImage,carbonLevel);
 
             if(carbonLevel==10)
                 carbonButton.interactable=false;
@@ -128,17 +138,23 @@ public class BuySystem : MonoBehaviour
 
     public void upgradeGemStone(){
         if(coinManager!=null&&coinManager.coin>=gemNeeded){
-            coinManager.coin -= gemNeeded;
+            coinManager.changeCoin(-gemNeeded);
             gemLevel+=1;
 
             coinManager.gemStoneCoin *= 1.1f;
             gemNeeded *= 1.4f;
+            
+            updateLevelImage(gemLevelImage,gemLevel);
 
             if(gemLevel==10)
                 gemButton.interactable=false;
 
             updateText(gemCostText,gemLevelText,gemNeeded,gemLevel);
         }
+    }
+
+    void updateLevelImage(Image levelImage,int level){
+        levelImage.fillAmount = (level)*1.0f/10f;
     }
 
 
