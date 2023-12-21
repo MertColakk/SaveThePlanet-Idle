@@ -49,6 +49,7 @@ public class BuySystem : MonoBehaviour
         habitabilitySystem = GetComponent<HabitabilityBarSystem>();
         coinManager = GetComponent<CoinManager>();
 
+
         updateAllText();
     }
 

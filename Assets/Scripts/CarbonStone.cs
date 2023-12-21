@@ -6,13 +6,15 @@ public class CarbonStone : MonoBehaviour
 {
     //Variables
     HabitabilityBarSystem habitabilitySystem;
-    [SerializeField] GameObject destoryPrefab,crashPrefab,destoryText,crashText;
+    EffectSystem effectSystem;
     
     void Start(){
         GameObject buySystem = GameObject.Find("BuySystem");
+        GameObject system = GameObject.Find("EffectSystem");
 
-        if(buySystem!=null){
+        if(buySystem!=null&&system!=null){
             habitabilitySystem = buySystem.GetComponent<HabitabilityBarSystem>();
+            effectSystem = system.GetComponent<EffectSystem>();
         }
         
         
@@ -20,16 +22,19 @@ public class CarbonStone : MonoBehaviour
 
     //For Disable from pool object
     void OnMouseDown(){
-        Instantiate(crashPrefab,transform.position,Quaternion.identity);
-        Instantiate(crashText,transform.position,Quaternion.identity);
         gameObject.SetActive(false);
+        habitabilitySystem.updateHabitability(habitabilitySystem.carbonStoneHabitability);
+            Instantiate(effectSystem.effectsPrefab[0],transform.position,Quaternion.identity);
+            Instantiate(effectSystem.effectsPrefab[3],transform.position,Quaternion.identity);
     }
-
-    private void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter(Collision other){
         if(other.gameObject.CompareTag("Player")){
-            habitabilitySystem.updateHabitability(habitabilitySystem.carbonStoneHabitability);
-            Instantiate(destoryPrefab,transform.position,Quaternion.identity);
-            Instantiate(destoryText,transform.position,Quaternion.identity);
+            Instantiate(effectSystem.effectsPrefab[0],transform.position,Quaternion.identity);
+            Instantiate(effectSystem.effectsPrefab[2],transform.position,Quaternion.identity);
         }
+                                
     }
+        
+    
 }
+
