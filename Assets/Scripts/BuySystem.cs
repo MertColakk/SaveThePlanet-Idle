@@ -49,6 +49,7 @@ public class BuySystem : MonoBehaviour
         habitabilitySystem = GetComponent<HabitabilityBarSystem>();
         coinManager = GetComponent<CoinManager>();
 
+
         updateAllText();
     }
 
@@ -57,6 +58,10 @@ public class BuySystem : MonoBehaviour
         isOpen = !isOpen;
 
         panel.gameObject.SetActive(isOpen);
+        if(isOpen)
+            Time.timeScale=0;
+        else
+            Time.timeScale=1;
     }
 
     void updateText(TMP_Text costText,TMP_Text levelText,float cost,int level){
