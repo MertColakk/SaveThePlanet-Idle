@@ -62,10 +62,11 @@ public class BuySystem : MonoBehaviour
         isOpen = !isOpen;
 
         panel.gameObject.SetActive(isOpen);
-        if(isOpen)
-            Time.timeScale=0;
-        else
+
+        if(!isOpen)
             Time.timeScale=1;
+        else
+            Time.timeScale=0;
     }
 
     void updateText(TMP_Text costText,TMP_Text levelText,float cost,int level){
