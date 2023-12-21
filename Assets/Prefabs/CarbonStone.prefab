@@ -103,7 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7f9e0ab569eef42bf5b4466ac44132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  habitabilityAmount: 30
+  destoryPrefab: {fileID: 2353600328335836179, guid: ceec7516237b4104b94300043ca39784, type: 3}
+  crashPrefab: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
+  destoryText: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+  crashText: {fileID: 8547867254204328264, guid: cf378989e15716e40a61692dcd97e628, type: 3}
 --- !u!114 &2717390982114683792
 MonoBehaviour:
   m_ObjectHideFlags: 0

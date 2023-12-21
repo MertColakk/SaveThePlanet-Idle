@@ -124,8 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3275db7ccb1b33a418e0de10a05a82c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToPlanet: -8
-  gemStoneCoin: 40
+  destoryPrefab: {fileID: 8791802859087666345, guid: ae07f2a45f14a82428409cfe410e6002, type: 3}
+  crashPrefab: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
+  destoryText: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+  crashText: {fileID: 8547867254204328264, guid: cf378989e15716e40a61692dcd97e628, type: 3}
 --- !u!114 &-5033647528395520577
 MonoBehaviour:
   m_ObjectHideFlags: 0

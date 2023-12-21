@@ -58,10 +58,11 @@ public class BuySystem : MonoBehaviour
         isOpen = !isOpen;
 
         panel.gameObject.SetActive(isOpen);
-        if(isOpen)
-            Time.timeScale=0;
-        else
+
+        if(!isOpen)
             Time.timeScale=1;
+        else
+            Time.timeScale=0;
     }
 
     void updateText(TMP_Text costText,TMP_Text levelText,float cost,int level){
@@ -139,6 +140,11 @@ public class BuySystem : MonoBehaviour
 
             updateText(gemCostText,gemLevelText,gemNeeded,gemLevel);
         }
+    }
+
+    //Debug fncs
+    public void upradeHab(){
+        habitabilitySystem.updateHabitability(100);
     }
 
 

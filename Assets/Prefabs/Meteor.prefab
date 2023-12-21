@@ -118,7 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644f4651c7dc349d3b6678171e27b302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToHabitability: -20
+  destoryPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  crashPrefab: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
+  destoryText: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+  crashText: {fileID: 8547867254204328264, guid: cf378989e15716e40a61692dcd97e628, type: 3}
 --- !u!135 &8649914461935953219
 SphereCollider:
   m_ObjectHideFlags: 0
