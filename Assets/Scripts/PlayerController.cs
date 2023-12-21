@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     float rotateSpeed = 30f; 
     HabitabilityBarSystem system;
     GameObject asset,asset1,asset2;
+    public GameObject changePrefab;
  
     void Start(){
         GameObject buySystem = GameObject.Find("BuySystem");
@@ -31,9 +32,11 @@ public class PlayerController : MonoBehaviour
         if(system.habitability>=750&&asset.activeSelf){
             asset.SetActive(false);
             asset1.SetActive(true);
+            Instantiate(changePrefab,transform.position,Quaternion.identity);
         }else if(system.habitability>=1500&&asset1.activeSelf){
             asset1.SetActive(false);
             asset2.SetActive(true);
+            Instantiate(changePrefab,transform.position,Quaternion.identity);
         }
     }
 

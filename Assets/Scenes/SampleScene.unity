@@ -570,6 +570,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7f9e0ab569eef42bf5b4466ac44132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destoryPrefab: {fileID: 0}
+  crashPrefab: {fileID: 0}
+  destoryText: {fileID: 0}
+  crashText: {fileID: 0}
 --- !u!114 &305162966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,7 +586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3275db7ccb1b33a418e0de10a05a82c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gemStoneCoin: 40
+  destoryPrefab: {fileID: 0}
+  crashPrefab: {fileID: 0}
+  destoryText: {fileID: 0}
+  crashText: {fileID: 0}
 --- !u!1 &339719712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272781a215df45743ab32462fff4d983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changePrefab: {fileID: 9157105887711914197, guid: c4f829cb7dd4b864caf8832ec5b1ee55, type: 3}
 --- !u!4 &792929742
 Transform:
   m_ObjectHideFlags: 0
